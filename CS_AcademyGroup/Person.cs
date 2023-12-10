@@ -1,47 +1,42 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CS_AcademyGroup
 {
     [Serializable]
     public class Person : Object
     {
-        public String name;
-        public String surname;
+        public String name, surname, phone;
         public UInt16 age;
-        public String phone;
 
         public String Name
         {
             get => name;
-            
-            set => name = value;            
+
+            set => name = value;
         }
 
         public String Surname
         {
             get => surname;
-            
+
             set => surname = value;
         }
         public UInt16 Age
         {
             get => age;
-            
+
             set => age = value;
         }
         public String Phone
         {
             get => phone;
-            
+
             set => phone = value;
         }
         //  Конструктор по умолчанию
         public Person() :
-            this(null, null, 0, null) {}
+            this(null, null, 0, null)
+        { }
 
         //  Конструктор с параметрами
         public Person(String name,
@@ -61,3 +56,4 @@ namespace CS_AcademyGroup
         }
     }
 }
+

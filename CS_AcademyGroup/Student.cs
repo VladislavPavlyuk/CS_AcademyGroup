@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CS_AcademyGroup;
 
 namespace CS_AcademyGroup
 {
     [Serializable]
-    public class Student : Person
+    public class Student : Person, IComparable<Student>
     {
         public Double average;
 
@@ -17,18 +12,18 @@ namespace CS_AcademyGroup
         public Double Average
         {
             get => average;
-            
+
             set => average = value;
         }
         public String Number_Of_Group
         {
             get => number_Of_Group;
-            
+
             set => number_Of_Group = value;
         }
         //  Конструктор по умолчанию
         public Student()
-            : this(null, null, 0, null, 0, null){}
+            : this(null, null, 0, null, 0, null) { }
 
         //  Конструктор с параметрами
         public Student(String name,
@@ -46,6 +41,52 @@ namespace CS_AcademyGroup
         {
             base.Print();
             Console.WriteLine("\t\t\t{0} \t\t{1}", average, number_Of_Group);
+        }
+        public int CompareTo(Student obj)
+        {
+            return name.CompareTo((obj as Student).name);
+        }
+
+        public class SortBySurname : IComparer<Student>
+        {
+            int IComparer<Student>.Compare(Student obj1, Student obj2)
+            {
+                if (obj1 is Student && obj2 is Student)
+                    return (obj1 as Student).surname.CompareTo((obj2 as Student).surname);
+
+                throw new NotImplementedException();
+            }
+        }
+        public class SortByAge : IComparer<Student>
+        {
+            int IComparer<Student>.Compare(Student obj1, Student obj2)
+            {
+                if (obj1 is Student && obj2 is Student)
+                    return (obj1 as Student).age.CompareTo((obj2 as Student).age);
+
+                throw new NotImplementedException();
+            }
+        }
+        public class SortByAverage : IComparer<Student>
+        {
+            int IComparer<Student>.Compare(Student obj1, Student obj2)
+            {
+                if (obj1 is Student && obj2 is Student)
+                    return (obj1 as Student).average.CompareTo((obj2 as Student).average);
+
+                throw new NotImplementedException();
+            }
+        }
+
+        public class SortByGroup : IComparer<Student>
+        {
+            int IComparer<Student>.Compare(Student obj1, Student obj2)
+            {
+                if (obj1 is Student && obj2 is Student)
+                    return (obj1 as Student).number_Of_Group.CompareTo((obj2 as Student).number_Of_Group);
+
+                throw new NotImplementedException();
+            }
         }
     }
 }

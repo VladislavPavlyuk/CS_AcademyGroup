@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CS_AcademyGroup
 {
@@ -21,7 +17,7 @@ namespace CS_AcademyGroup
             do
             {
                 Console.Clear();
-                Console.WriteLine("Сделайте выбор :\n");
+                Console.WriteLine("Please make a choice :\n");
 
                 for (int i = 0; i < menuItems.Length; i++)
                 {
@@ -53,4 +49,6 @@ namespace CS_AcademyGroup
         }
     }
 }
+
+
 

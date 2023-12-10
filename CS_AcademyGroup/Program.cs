@@ -17,21 +17,21 @@ namespace CS_AcademyGroup
 
             string[] items =
                 {
-                "Добавить студента в группу", //0
-                "Удалить студента из группы", //1
-                "Изменить данные студента", //2
-                "Распечатать группу", //3 
-                "Сохранить в файл", //4
-                "Загрузить из файла", //5
-                "Поиск студента", //6
-                "Выход"
+                "Add student", //0
+                "Delete student", //1
+                "Change student data", //2
+                "Print", //3 
+                "Save", //4
+                "Load", //5
+                "Find student", //6
+                "Exit"
             };
 
             ConsoleMenu menu = new ConsoleMenu(items);
             int menuResult;
             do
             {
-                Console.WriteLine("Академическая группа");
+                Console.WriteLine("Academy group");
 
                 menuResult = menu.PrintMenu();
 
@@ -65,7 +65,7 @@ namespace CS_AcademyGroup
                         break;
                 }
 
-                Console.WriteLine("Для продолжения нажмите любую клавишу");
+                Console.WriteLine("Press any key to continue");
                 Console.ReadKey();
             } while (menuResult != items.Length - 1);
 
@@ -122,7 +122,7 @@ namespace CS_AcademyGroup
             {
                 obj.SaveBinary();
 
-                Console.WriteLine("Для продолжения нажмите любую клавишу");
+                Console.WriteLine("Press any key to continue");
 
                 Console.ReadKey();
 
@@ -139,15 +139,15 @@ namespace CS_AcademyGroup
             {
                 obj.LoadBinary();
 
-                Console.WriteLine("Для продолжения нажмите любую клавишу");
+                Console.WriteLine("Press any key to continue");
 
-                Console.ReadKey();                
+                Console.ReadKey();
 
                 Console.Clear();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                Console.WriteLine("Ошибка!");
+                Console.WriteLine(e.Message);
             }
         }
         static void Search(Academy_Group obj)       // поиск студента
@@ -163,7 +163,7 @@ namespace CS_AcademyGroup
         }
         static void Exit()
         {
-            Console.WriteLine("Приложение заканчивает работу!");
+            Console.WriteLine("Good bye!");
         }
     }
 }
