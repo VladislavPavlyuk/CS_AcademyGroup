@@ -210,28 +210,28 @@ namespace CS_AcademyGroup
             }
         }
         public void SaveBinary()
+        {
+            try
             {
-                try
-                {
-                    const string fileName = "AcademyGroup.bin";
+                const string fileName = "AcademyGroup.bin";
 
-                    using (stream = new FileStream(fileName, FileMode.Create))
-                    {
-                        formatter = new BinaryFormatter();
-                        formatter.Serialize(stream, ag);
-                        stream.Close();
-
-                        Console.WriteLine("Сериализация успешно выполнена!");
-                    }
-                }
-                catch (Exception e)
+                using (stream = new FileStream(fileName, FileMode.Create))
                 {
-                    Console.WriteLine(e.Message);
-                    Console.ReadKey();
-                    return;
+                    formatter = new BinaryFormatter();
+                    formatter.Serialize(stream, ag);
+                    stream.Close();
+
+                    Console.WriteLine("Serialization is done successfully!");
                 }
             }
-             public void LoadBinary()
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.ReadKey();
+                return;
+            }
+        }
+        public void LoadBinary()
             {
                 try
                 {
