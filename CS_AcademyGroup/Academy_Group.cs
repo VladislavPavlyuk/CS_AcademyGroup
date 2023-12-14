@@ -191,25 +191,25 @@ namespace CS_AcademyGroup
             }
         }
         public void Print()
+        {
+            try
             {
-                try
-                {
-                    Console.WriteLine("\n\t\t\t\t\tСписок Академической группы :\n\nИмя: \t\tФамилия: \tВозраст: \tНомер телефона: \tСредний балл: \tНомер группы: ");
+                Console.WriteLine("\n\t\t\t\t\tAcademy group list\n\nName: \t\tSurname: \tAge: \tPhone number: \tAverage rate: \tGroup number: ");
 
-                    foreach (Student temp in ag)
-                    {
-                        temp.Print();
-                    }
-                }
-
-                catch (Exception e)
+                foreach (Student temp in ag)
                 {
-                    Console.WriteLine(e.Message);
-                    Console.ReadKey();
-                    return;
+                    temp.Print();
                 }
             }
-            public void SaveBinary()
+
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.ReadKey();
+                return;
+            }
+        }
+        public void SaveBinary()
             {
                 try
                 {
