@@ -2,19 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 
 namespace CS_AcademyGroup
 {
     [Serializable]
-        public class Academy_Group 
-        {        
-            ArrayList ag;
+    public class Academy_Group : ICloneable, IEnumerable, IEnumerator
+    {
+        ArrayList ag;
 
             int position = -1;
 
