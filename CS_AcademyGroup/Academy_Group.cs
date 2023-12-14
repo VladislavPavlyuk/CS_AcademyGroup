@@ -298,5 +298,9 @@ namespace CS_AcademyGroup
         {
             position = -1;
         }
+        public IEnumerator GetEnumerator()
+        {
+            return ag.GetEnumerator();
+        }
     }
 }
