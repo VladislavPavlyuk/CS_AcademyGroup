@@ -293,6 +293,15 @@ namespace CS_AcademyGroup
                 return ag[position];
             }
         }
+        public object Clone()
+        {
+            string group = Console.ReadLine();
+            ArrayList C_Group = new ArrayList();
+            foreach (Student student in ag)
+                if (group == student.number_Of_Group)
+                    C_Group.Add(student);
+            return C_Group;
+        }
 
     }
 }
