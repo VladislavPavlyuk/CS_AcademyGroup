@@ -232,31 +232,31 @@ namespace CS_AcademyGroup
             }
         }
         public void LoadBinary()
+        {
+            try
             {
-                try
-                {
-                    const string fileName = "AcademyGroup.bin";
+                const string fileName = "AcademyGroup.bin";
 
-                    if (File.Exists(fileName))
+                if (File.Exists(fileName))
+                {
+                    using (stream = new FileStream(fileName, FileMode.Open))
                     {
-                        using (stream = new FileStream(fileName, FileMode.Open))
-                        {
-                            formatter = new BinaryFormatter();
-                            ag = (ArrayList)formatter.Deserialize(stream);
-                            stream.Close();
-                            Console.WriteLine("Десериализация успешно выполнена!");
-                        }
+                        formatter = new BinaryFormatter();
+                        ag = (ArrayList)formatter.Deserialize(stream);
+                        stream.Close();
+                        Console.WriteLine("Deserialization is done successfully!");
                     }
                 }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                    Console.ReadKey();
-                    return;
-                }
             }
- 
-            public void Search()
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.ReadKey();
+                return;
+            }
+        }
+
+        public void Search()
             {
                 try
                 {
