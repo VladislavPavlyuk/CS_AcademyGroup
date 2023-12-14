@@ -61,33 +61,33 @@ namespace CS_AcademyGroup
             }
         }
         public void Remove()
+        {
+            try
             {
-                try
+                Console.WriteLine("\nPlease enter student surname to delete : ");
+
+                System.String surname = Console.ReadLine();
+                int index = -1;
+                for (int i = 0; i < ag.Count; i++)
                 {
-                    Console.WriteLine("\nПожалуйста введите данные студента для удаления : ");
-                    Console.WriteLine("\nФамилия :");
-                    System.String surname = Console.ReadLine();
-                    int index = -1;
-                    for (int i = 0; i < ag.Count; i++)
-                    {
-                        if ((ag[i] as Student).Surname == surname)
-                            index = i;
-                    }
-                    if (index == -1)
-                        throw new Exception("Студент c данной фамилией отсутствует в списке");
-                    else
-                        ag.RemoveAt(index);
-                    Console.WriteLine("Студент {0} удален из списка", surname);
-                    Console.ReadKey();
+                    if ((ag[i] as Student).Surname == surname)
+                        index = i;
                 }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                    Console.ReadKey();
-                    return;
-                }
+                if (index == -1)
+                    throw new Exception("Student with such name and surname is not exist in the list");
+                else
+                    ag.RemoveAt(index);
+                Console.WriteLine("Student {0} deleted from the list", surname);
+                Console.ReadKey();
             }
-            public void Edit()
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.ReadKey();
+                return;
+            }
+        }
+        public void Edit()
             {
                 try
                 {
