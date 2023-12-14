@@ -26,40 +26,41 @@ namespace CS_AcademyGroup
                 ag = new ArrayList();
             }
 
-            public void Add()
+        public void Add()
+        {
+            try
             {
-                try
-                {
-                    Console.WriteLine("\nПожалуйста введите данные студента : ");
-                    Console.Write("\nИмя :\t\t");
-                    System.String name = Console.ReadLine();
+                Console.WriteLine("\nPlease enter students data : ");
 
-                    Console.Write("\nФамилия :\t");
-                    System.String surname = Console.ReadLine();
+                Console.Write("\nName :\t\t");
+                System.String name = Console.ReadLine();
 
-                    Console.Write("\nВозраст :\t");
-                    System.UInt16 age = System.UInt16.Parse(Console.ReadLine());
+                Console.Write("\nSurname :\t");
+                System.String surname = Console.ReadLine();
 
-                    Console.Write("\nНомер телефона :");
-                    System.String phone = Console.ReadLine();
+                Console.Write("\nAge :\t");
+                System.UInt16 age = System.UInt16.Parse(Console.ReadLine());
 
-                    Console.Write("\nСредний балл :\t");
-                    System.Double average = System.Double.Parse(Console.ReadLine());
+                Console.Write("\nPhone number :");
+                System.String phone = Console.ReadLine();
 
-                    Console.Write("\nНомер группы :\t");
-                    System.String number_Of_Group = Console.ReadLine();
+                Console.Write("\nAverage rate :\t");
+                System.Double average = System.Double.Parse(Console.ReadLine());
 
-                    Student st = new Student(name, surname, age, phone, average, number_Of_Group);
-                    ag.Add(st);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                    Console.ReadKey();
-                    return;
-                }
+                Console.Write("\nGroup number :\t");
+                System.String number_Of_Group = Console.ReadLine();
+
+                Student st = new Student(name, surname, age, phone, average, number_Of_Group);
+                ag.Add(st);
             }
-            public void Remove()
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.ReadKey();
+                return;
+            }
+        }
+        public void Remove()
             {
                 try
                 {
