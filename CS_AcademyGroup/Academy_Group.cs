@@ -257,31 +257,31 @@ namespace CS_AcademyGroup
         }
 
         public void Search()
+        {
+            try
             {
-                try
-                {
-                    Console.WriteLine("\nПожалуйста введите данные студента для поиска : ");
-                    Console.WriteLine("\nФамилия :");
-                    System.String _surname = Console.ReadLine();
-                    bool flag = false;
-                    for (int i = 0; i < ag.Count; i++)
-                    {
-                        if ((ag[i] as Student).Surname == _surname)
-                        {
-                            flag = true;
+                Console.WriteLine("\nPlease enter students surname to find : ");
 
-                            (ag[i] as Student).Print();
-                        }
-                    }
-                    if (!flag)
-                        throw new Exception("В списке отсутствует студент с такой фамилией!");
-                }
-                catch (Exception e)
+                System.String _surname = Console.ReadLine();
+                bool flag = false;
+                for (int i = 0; i < ag.Count; i++)
                 {
-                    Console.WriteLine(e.Message);
-                    Console.ReadKey();
-                    return;
+                    if ((ag[i] as Student).Surname == _surname)
+                    {
+                        flag = true;
+
+                        (ag[i] as Student).Print();
+                    }
                 }
+                if (!flag)
+                    throw new Exception("Student with such surname is not exist in the list!");
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.ReadKey();
+                return;
+            }
+        }
     }
 }
