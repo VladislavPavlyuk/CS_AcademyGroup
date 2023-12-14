@@ -283,5 +283,16 @@ namespace CS_AcademyGroup
                 return;
             }
         }
+
+        public object Current
+        {
+            get
+            {
+                if (position == -1 || position >= ag.Count)
+                    throw new InvalidOperationException();
+                return ag[position];
+            }
+        }
+
     }
 }
