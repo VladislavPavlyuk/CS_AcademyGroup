@@ -88,109 +88,109 @@ namespace CS_AcademyGroup
             }
         }
         public void Edit()
+        {
+            try
             {
-                try
+                Console.WriteLine("\nPlease enter students name to edit : ");
+                Console.WriteLine("\nSurname :");
+                System.String _surname = Console.ReadLine();
+                bool flag = false;
+
+                for (int i = 0; i < ag.Count; i++)
                 {
-                    Console.WriteLine("\nПожалуйста введите данные студента для редактирования : ");
-                    Console.WriteLine("\nФамилия :");
-                    System.String _surname = Console.ReadLine();
-                    bool flag = false;
-
-                    for (int i = 0; i < ag.Count; i++)
+                    if ((ag[i] as Student).Surname == _surname)
                     {
-                        if ((ag[i] as Student).Surname == _surname)
+                        flag = true;
+
+                        (ag[i] as Student).Print();
+
+                        Console.WriteLine("What students data you want to edit?\nPress any key to continue...");
+                        Console.ReadKey();
+
+                        string[] items =
                         {
-                            flag = true;
-
-                            (ag[i] as Student).Print();
-
-                            Console.WriteLine("Какие данные студента Вы хотели бы изменить?\nНажмите любую кнопку для продолжения...");
-                            Console.ReadKey();
-
-                            string[] items =
-                            {
-                            "Имя",
-                            "Фамилию",
-                            "Возраст",
-                            "Номер телефона",
-                            "Средний балл",
-                            "Номер группы",
-                            "Выход"
+                            "Name",
+                            "Surname",
+                            "Age",
+                            "Phone number",
+                            "Average rate",
+                            "Groupe number",
+                            "Exit"
                         };
 
-                            ConsoleMenu menu = new ConsoleMenu(items);
-                            int menuResult;
-                            do
+                        ConsoleMenu menu = new ConsoleMenu(items);
+                        int menuResult;
+                        do
+                        {
+                            menuResult = menu.PrintMenu();
+
+                            //Console.Clear();
+                            switch (menuResult)
                             {
-                                menuResult = menu.PrintMenu();
+                                case 0:
+                                    {
 
-                                //Console.Clear();
-                                switch (menuResult)
-                                {
-                                    case 0:
-                                        {
-
-                                            Console.WriteLine("Введите новое имя студента : ");
-                                            System.String name = Console.ReadLine();
-                                            (ag[i] as Student).Name = name;
-                                            break;
-                                        }
-                                    case 1:
-                                        {
-                                            Console.WriteLine("Введите новую фамилию студента : ");
-                                            System.String surname = Console.ReadLine();
-                                            (ag[i] as Student).Surname = surname;
-                                            break;
-                                        }
-                                    case 2:
-                                        {
-                                            Console.WriteLine("Введите новый возраст студента : ");
-                                            System.UInt16 age = System.UInt16.Parse(Console.ReadLine());
-                                            (ag[i] as Student).Age = age;
-                                            break;
-                                        }
-                                    case 3:
-                                        {
-                                            Console.WriteLine("Введите новый номер телефона студента : ");
-                                            System.String phone = Console.ReadLine();
-                                            (ag[i] as Student).Phone = phone;
-                                            break;
-                                        }
-                                    case 4:
-                                        {
-                                            Console.WriteLine("Введите новый средний балл студента : ");
-                                            System.Double average = System.Double.Parse(Console.ReadLine());
-                                            (ag[i] as Student).Average = average;
-                                            break;
-                                        }
-                                    case 5:
-                                        {
-                                            Console.WriteLine("Введите новый номер группы студента : ");
-                                            System.String number_Of_Group = Console.ReadLine();
-                                            (ag[i] as Student).Number_Of_Group = number_Of_Group;
-                                            break;
-                                        }
-                                    default:
+                                        Console.WriteLine("Enter students new name : ");
+                                        System.String name = Console.ReadLine();
+                                        (ag[i] as Student).Name = name;
                                         break;
-                                }
-                                    (ag[i] as Student).Print();
-                                Console.WriteLine("Данные о студенте были успешно изменены");
+                                    }
+                                case 1:
+                                    {
+                                        Console.WriteLine("Enter students new surname : ");
+                                        System.String surname = Console.ReadLine();
+                                        (ag[i] as Student).Surname = surname;
+                                        break;
+                                    }
+                                case 2:
+                                    {
+                                        Console.WriteLine("Enter students new age : ");
+                                        System.UInt16 age = System.UInt16.Parse(Console.ReadLine());
+                                        (ag[i] as Student).Age = age;
+                                        break;
+                                    }
+                                case 3:
+                                    {
+                                        Console.WriteLine("Enter students new phone number : ");
+                                        System.String phone = Console.ReadLine();
+                                        (ag[i] as Student).Phone = phone;
+                                        break;
+                                    }
+                                case 4:
+                                    {
+                                        Console.WriteLine("Enter students new average rate : ");
+                                        System.Double average = System.Double.Parse(Console.ReadLine());
+                                        (ag[i] as Student).Average = average;
+                                        break;
+                                    }
+                                case 5:
+                                    {
+                                        Console.WriteLine("Enter students new group number : ");
+                                        System.String number_Of_Group = Console.ReadLine();
+                                        (ag[i] as Student).Number_Of_Group = number_Of_Group;
+                                        break;
+                                    }
+                                default:
+                                    break;
+                            }
+                                (ag[i] as Student).Print();
+                            Console.WriteLine("Students data was changed successfully");
 
-                            } while (menuResult != items.Length - 1);
-                        }
+                        } while (menuResult != items.Length - 1);
                     }
+                }
 
-                    if (!flag)
-                        throw new Exception("Студент с такой фамилией отсутствует в списке!");
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                    Console.ReadKey();
-                    return;
-                }
+                if (!flag)
+                    throw new Exception("Student with such surname doesn't exist!");
             }
-            public void Print()
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.ReadKey();
+                return;
+            }
+        }
+        public void Print()
             {
                 try
                 {
