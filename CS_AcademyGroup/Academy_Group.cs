@@ -283,5 +283,20 @@ namespace CS_AcademyGroup
                 return;
             }
         }
+
+        public bool MoveNext()
+        {
+            if (position < ag.Count - 1)
+            {
+                position++;
+                return true;
+            }
+            else
+                return false;
+        }
+        public void Reset()
+        {
+            position = -1;
+        }
     }
 }
