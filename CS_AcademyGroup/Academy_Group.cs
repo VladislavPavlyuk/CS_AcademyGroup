@@ -284,6 +284,25 @@ namespace CS_AcademyGroup
             }
         }
 
+        public bool MoveNext()
+        {
+            if (position < ag.Count - 1)
+            {
+                position++;
+                return true;
+            }
+            else
+                return false;
+        }
+        public void Reset()
+        {
+            position = -1;
+        }
+        public IEnumerator GetEnumerator()
+        {
+            return ag.GetEnumerator();
+        }
+
         public object Current
         {
             get
